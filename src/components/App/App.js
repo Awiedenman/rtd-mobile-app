@@ -8,7 +8,6 @@ import LandingPage from '../Landing/Landing';
 import SignUpPage from '../SignUp/SignUp';
 import SignInPage from '../SignIn/SignIn';
 import PasswordForgetPage from '../PasswordForget/PasswordForget';
-import { firebase } from '../../firebase';
 import withAuthentication from '../withAuthentication';
 
 import * as routes from '../../constants/routes';

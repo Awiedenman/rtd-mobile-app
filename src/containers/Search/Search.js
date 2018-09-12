@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import './Search.css';
+import LocationSearchInput from
+  '../../components/LocationSearchInput.js/LocationSearchInput';
 
 
 export class Search extends Component {
@@ -16,10 +18,10 @@ export class Search extends Component {
     };
   }
 
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  }
+  // handleChange = (event) => {
+  //   const { name, value } = event.target;
+  //   this.setState({ [name]: value });
+  // }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -33,7 +35,9 @@ export class Search extends Component {
     return (
       <div className="search_container">
         <form onSubmit={ this.handleSubmit }>
-          <input
+          <LocationSearchInput />
+          <LocationSearchInput />
+          {/* <input
             id="starting_location"
             className="search-input"
             onChange={ this.handleChange }
@@ -50,7 +54,7 @@ export class Search extends Component {
             name='destination' 
             value={ this.state.destination } 
             placeholder="Destination" 
-          />
+          /> */}
           <button 
             className="search_button"
             type='submit'>Search
