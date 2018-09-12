@@ -1,11 +1,13 @@
 import React from 'react';
-import './Header.css';
-import SignOutButton from '../SignOut/SignOut';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import SignOutButton from '../SignOut/SignOut';
 import AuthUserContext from '../AuthUserContext';
+
 import * as routes from '../../constants/routes';
 
+import './Header.css';
   
 const Header = ({ authUser }) => {
   const HeaderNonAuth = () => {
@@ -36,4 +38,8 @@ const Header = ({ authUser }) => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+  authUser: state.sessionState.authUser
+});
+
+export default connect(mapStateToProps)(Header);

@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import './Search.css';
+// import LocationSearchInput from
+//   '../../components/LocationSearchInput.js/LocationSearchInput';
 
 
 export class Search extends Component {
@@ -33,6 +35,8 @@ export class Search extends Component {
     return (
       <div className="search_container">
         <form onSubmit={ this.handleSubmit }>
+          {/* <LocationSearchInput />
+          <LocationSearchInput /> */}
           <input
             id="starting_location"
             className="search-input"
