@@ -5,13 +5,9 @@ import { storeMockFavRoutes} from '../../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { mockFavRoutes } from '../../mockFavRoutes';
 import './Home.css';
 
 export class HomePage extends Component {
-  componentDidMount(){
-    this.props.storeMockFavRoutes(mockFavRoutes);
-  }
 
   render(){
     return (
@@ -22,6 +18,7 @@ export class HomePage extends Component {
     );
   }
 }
+
 export const mapDispatchToProps = dispatch => ({
   storeMockFavRoutes: (mockFavRoutes) => (
     dispatch(storeMockFavRoutes(mockFavRoutes))
