@@ -4,7 +4,8 @@ import isLoading from './isLoadingReducer';
 import schedules from './scheduleReducer';
 import userSearch from './userSearchReducer';
 import favorites from './favoritesReducer';
-
+import sessionsReducer from './sessionsReducer';
+import userReducer from './userReducer';
 
 
 const rootReducer = combineReducers({
@@ -12,7 +13,9 @@ const rootReducer = combineReducers({
   schedules,
   hasErrored,
   isLoading,
-  favorites
+  favorites,
+  sessionState: sessionsReducer,
+  userState: userReducer
 });
 
 export default rootReducer;
