@@ -1,6 +1,6 @@
-import { isLoading, hasErrored, signUpUser } from '../actions';
+import { isLoading, hasErrored, signInUser } from '../actions';
 
-const signUpThunk = (fetchObj) => {
+const signInThunk = (fetchObj) => {
   const {
     url,
     options
@@ -17,10 +17,10 @@ const signUpThunk = (fetchObj) => {
       })
       .then(response => response.json())
       .then(userInfo => {
-        dispatch(signUpUser(userInfo));
+        dispatch(signInUser(userInfo));
       })
       .catch(() => dispatch(hasErrored(true)));
   };
 };
 
-export default signUpThunk;
+export default signInThunk;

@@ -8,3 +8,9 @@ header {
   height: 55px;
   width: auto;
 }
+
+.sign-in-link {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}

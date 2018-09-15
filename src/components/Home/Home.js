@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import Search from '../../containers/Search/Search';
 import FavoritesContainer from '../FavoritesContainer/FavoritesContainer';
-import { storeMockFavRoutes} from '../../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { mockFavRoutes } from '../../mockFavRoutes';
+
 import './Home.css';
 
 export class HomePage extends Component {
   componentDidMount(){
-    this.props.storeMockFavRoutes(mockFavRoutes);
   }
 
   render(){
@@ -22,14 +20,13 @@ export class HomePage extends Component {
     );
   }
 }
-export const mapDispatchToProps = dispatch => ({
-  storeMockFavRoutes: (mockFavRoutes) => (
-    dispatch(storeMockFavRoutes(mockFavRoutes))
-  )
+
+export const mapStateToProps = state => ({
+  user: state.user
 });
 
-export default connect(null, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps)(HomePage);
 
 HomePage.propTypes = {
-  storeMockFavRoutes: PropTypes.func
+  user: PropTypes.object
 };

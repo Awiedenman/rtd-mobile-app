@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
 import PlacesAutocomplete from 'react-places-autocomplete';
+import { storeStartAddress } from '../../actions';
 import { connect } from "react-redux";
-import { storeEndAddress} from '../../actions';
+import PropTypes from 'prop-types';
  
-class EndPointInput extends Component {
+class StartAddressInput extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      endAddress: ''
+      startAddress: ''
     };
   }
  
-  handleChange = endAddress => {
-    this.setState({ endAddress });
+  handleChange = startAddress => {
+    this.setState({ startAddress });
   };
  
   handleSelect = address => {
-    console.log('end: ', address);
-    this.props.storeEndAddress(address);
+    this.props.storeStartAddress(address);
   };
  
   render() {
     return (
       <PlacesAutocomplete
-        name='endAddress'
-        value={this.state.endAddress}
+        name='startAddress'
+        value={this.state.startAddress}
         onChange={this.handleChange}
         onSelect={this.handleSelect}
       >
@@ -33,19 +33,18 @@ class EndPointInput extends Component {
           return (
             <div>
               <input
-                value={this.state.endAddress}
+                value={this.state.startAddress}
                 {...getInputProps({
-                  placeholder: 'Search ending Point ...',
-                  className: 'location-search-input-end'
+                  placeholder: 'Search Starting Point ...',
+                  className: 'location-search-input-start'
                 })}
               />
               <div className="autocomplete-dropdown-container">
                 {loading && <div>Loading...</div>}
-                {suggestions.map((suggestion, index) => {
+                {suggestions.map((suggestion, index )=> {
                   const className = suggestion.active
                     ? 'suggestion-item--active'
                     : 'suggestion-item';
-                  // inline style for demonstration purpose
                   const style = suggestion.active
                     ? { backgroundColor: '#fafafa', cursor: 'pointer' }
                     : { backgroundColor: '#ffffff', cursor: 'pointer' };
@@ -71,7 +70,11 @@ class EndPointInput extends Component {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  storeEndAddress: (endAddress) => dispatch(storeEndAddress(endAddress))
+  storeStartAddress: (startAddress) => dispatch(storeStartAddress(startAddress))
 });
 
-export default connect(null, mapDispatchToProps)(EndPointInput);
+export default connect(null, mapDispatchToProps)(StartAddressInput);
+
+StartAddressInput.propTypes = {
+  storeStartAddress: PropTypes.func
+};

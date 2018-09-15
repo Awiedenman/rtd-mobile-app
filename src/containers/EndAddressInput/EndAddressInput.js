@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
 import PlacesAutocomplete from 'react-places-autocomplete';
-import { storeStartAddress } from '../../actions';
 import { connect } from "react-redux";
+import { storeEndAddress} from '../../actions';
+import PropTypes from 'prop-types';
  
-class StartPointInput extends Component {
+class EndAddressInput extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      startAddress: ''
+      endAddress: ''
     };
   }
  
-  handleChange = startAddress => {
-    this.setState({ startAddress });
+  handleChange = endAddress => {
+    this.setState({ endAddress });
   };
  
   handleSelect = address => {
-    console.log('start: ', address);
-    this.props.storeStartAddress(address);
+    this.props.storeEndAddress(address);
   };
  
   render() {
     return (
       <PlacesAutocomplete
-        name='startAddress'
-        value={this.state.startAddress}
+        name='endAddress'
+        value={this.state.endAddress}
         onChange={this.handleChange}
         onSelect={this.handleSelect}
       >
@@ -33,15 +33,15 @@ class StartPointInput extends Component {
           return (
             <div>
               <input
-                value={this.state.startAddress}
+                value={this.state.endAddress}
                 {...getInputProps({
-                  placeholder: 'Search Starting Point ...',
-                  className: 'location-search-input-start'
+                  placeholder: 'Search ending Point ...',
+                  className: 'location-search-input-end'
                 })}
               />
               <div className="autocomplete-dropdown-container">
                 {loading && <div>Loading...</div>}
-                {suggestions.map((suggestion, index )=> {
+                {suggestions.map((suggestion, index) => {
                   const className = suggestion.active
                     ? 'suggestion-item--active'
                     : 'suggestion-item';
@@ -71,7 +71,11 @@ class StartPointInput extends Component {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  storeStartAddress: (startAddress) => dispatch(storeStartAddress(startAddress))
+  storeEndAddress: (endAddress) => dispatch(storeEndAddress(endAddress))
 });
 
-export default connect(null, mapDispatchToProps)(StartPointInput);
+export default connect(null, mapDispatchToProps)(EndAddressInput);
+
+EndAddressInput.propTypes = {
+  storeEndAddress: PropTypes.func
+};

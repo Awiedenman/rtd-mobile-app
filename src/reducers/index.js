@@ -2,10 +2,11 @@ import { combineReducers } from 'redux';
 import hasErrored from './hasErroredReducer';
 import isLoading from './isLoadingReducer';
 import schedules from './scheduleReducer';
-import userInfo from './userInfoReducer';
+import user from './userReducer';
 import favorites from './favoritesReducer';
 import startAddress from './startAddressReducer';
 import endAddress from './endAddressReducer';
+import itinerary from './itineraryReducer';
 
 
 const rootReducer = combineReducers({
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   hasErrored,
   isLoading,
   favorites,
-  userInfo
+  user,
+  itinerary
 });
 
 export default rootReducer;
